@@ -14,6 +14,11 @@ nav{
 h2{
     text-align: center;
 }
-.answers{
+.h4{
     padding: 10px;
+    margin-left: 20px;
+}
+h4{
+    padding: 10px;
+    margin-left: 40px;
 }
