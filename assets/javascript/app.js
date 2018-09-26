@@ -35,8 +35,6 @@ var correct = 0;
 
 var incorrect = 0;
 
-        $('.time').append("<h2>"+timer+"</h2>");
-        $('#Qulestion').append(question1.question);
 
 console.log(question1.question);
 console.log(question1.choices);
