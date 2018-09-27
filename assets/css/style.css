@@ -1,3 +1,6 @@
+body{
+    background: gray;
+}
 .jumbotron{
     width: 60vw;
     display: none;
@@ -6,6 +9,7 @@
 .heading{
     width: 60vw;
     padding: 20px;
+    
     
 }
 
@@ -17,16 +21,26 @@ h1{
 }
 h2{
     text-align: center;
-}
-.h4{
-    padding: 10px;
-    margin-left: 20px;
-}
-h4{
-    padding: 10px;
-    margin-left: 40px;
+    margin-bottom: 15px;
 }
 
+h4{
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background: #009ADA;
+    border-radius: 6px;
+    
+}
 #start{
     
+    width: 60vw;
+    height: 8vw;
+}
+.QSTN{
+    margin-bottom: 50px;
+}
+
+.timme{
+    margin-top: 40px;
 }

@@ -2,8 +2,8 @@ $(document).ready(function(){
 
     var question1 = {
         question: "What does BMW stand for?",
-        choices: ["Best Motor Works", "Beautiful Mechanical Wonders", "Bavarian Money Wagens", "Bavarian Motor Works"],
-        correctAnswer: 3,
+        choices: ["Best Motor Works", "Bavarian Motor Works", "Bavarian Money Wagens", "Beautiful Mechanical Wonders"],
+        correctAnswer: 1,
     }
 
     var question2 = {
@@ -19,8 +19,8 @@ $(document).ready(function(){
     }
 
     var question4 = {
-        question: "what kind of car does matthew mcconaughey drive in dazed and confused?",
-        choices: ["Chevrolet Chevelle SS", "1973 Pontiac Firebird", "1975 Chevy Camero", "2015 BMW M4"],
+        question: "Which car holds the fastest lap around the Nurburgring?",
+        choices: ["Lamborghini Aventador SVJ", "Pontiac Firebird", "Reliant Robin", "Aston Martin DB11"],
         correctAnswer: 0
     }
 
@@ -30,15 +30,14 @@ $(document).ready(function(){
         correctAnswer: 3
     }
 
-    var placeholder;
+    var myVar;
 
-    var timer = 5;
+    var timer = 10;
 
     var correct = 0;
 
     var incorrect = 0;
 
-    $('#Question').append("<h2>this</h2>");
     console.log(question1.question);
     console.log(question1.choices);
 
@@ -48,44 +47,54 @@ $(document).ready(function(){
         $("#start").hide();
         $('.jumbotron').show();
 
-        // let myVar = setInterval(countD, 1000);
+         myVar = setInterval(countD, 1000);
 
     });
 
     //function that counts down the timer
         function countD(){
-            // timer --;
+            timer --;
 
-            $('.time').empty();
-            $('.time').append("<h2>"+timer+"</h2>");
+            $('#time').empty();
+            $('#time').append("<h2 class='timme'>Time Left: "+timer+"</h2>");
 
             if(timer === 0){
+                
+                timer = 10;
+                $("#start").show();
+                $('.jumbotron').hide();
                 alert("too slow")
                 clearInterval(myVar);
             }
         }
     //function that resets DOM    
         function clrA(){
+            timer = 10;
             $('h2').empty();
-            $('.time').empty();
+            $('#time').empty();
             $('h4').remove();
         }
 
-    // function to display trivia question and choices
-        function showTrivia1(){
-            $('.time').append("<h2>"+timer+"</h2>");
-            $('#Quest').append("<h2>" + question1.question + "</h2>");
-            $('.win').append("<h2>Correct: "+correct+"</h2>");
-            $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+        //function to show timer correct/incorrect
+        function showIt(){
+            $('#time').append("<h2>Time Left: "+timer+"</h2>");
+            $('#win').append("<h2>Correct: "+correct+"</h2>");
+            $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+        }
 
+    // functions to display trivia questions and choices
+        function showTrivia1(){
+
+            showIt();
+            $('#Quest').append("<h2 class = QSTN>" + question1.question + "</h2>");
 
             for(var i = 0; i < question1.choices.length; i++){
-                // var answers = $('<h2>'+question1.choices[i]+'<h2>');
+              
                 $('#choices').append('<h4 id="' + [i] + '">'+question1.choices[i]+"</h4>");
                 $("<h4>").addClass([i]);
                 console.log(question1.choices[i]);
             }
-
+            //on click event to see if you're correct or not
             $("h4").on("click", function(){
                 let ChId = event.target.id;
                 console.log(ChId);
@@ -99,45 +108,47 @@ $(document).ready(function(){
                 }
                 else{
 
-                    incorrect++
-                    $(".loss").empty();
-                    $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+                    incorrect++;
+                    $("#loss").empty();
+                    $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
                     alert('Wrong')
                 }
             });
         }    
 
         function showTrivia2(){
-            $('.time').append("<h2>"+timer+"</h2>");
-            $('#Quest').append("<h2>" + question2.question + "</h2>");
-            $('.win').append("<h2>Correct: "+correct+"</h2>");
-            $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+            
+            showIt();
+            $('#Quest').append("<h2 class = QSTN>" + question2.question + "</h2>");
 
             for(var i = 0; i < question2.choices.length; i++){
-                // var answers = $('<h2>'+question1.choices[i]+'<h2>');
+ 
                 $('#choices').append('<h4 id="' + [i] + '">'+question2.choices[i]+"</h4>");
                 $("<h4>").addClass([i]);
                 console.log(question2.choices[i]);
+
             }
             $("h4").on("click", function(){
                 let ChId = event.target.id;
                 console.log(ChId);
                 if(ChId == question2.correctAnswer){
+
+                    correct++;
                     alert("Correct");
                     clrA();
                     showTrivia3();
                 }
                 else{
-                    alert('Wrong')
+                    incorrect ++;
+                    alert('Wrong');
                 }
             });
         }
         
         function showTrivia3(){
-            $('.time').append("<h2>"+timer+"</h2>");
-            $('#Quest').append("<h2>" + question3.question + "</h2>");
-            $('.win').append("<h2>Correct: "+correct+"</h2>");
-            $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+            
+            showIt();
+            $('#Quest').append("<h2 class = QSTN>" + question3.question + "</h2>");
 
             for(var i = 0; i < question3.choices.length; i++){
                 // var answers = $('<h2>'+question1.choices[i]+'<h2>');
@@ -149,21 +160,25 @@ $(document).ready(function(){
                 let ChId = event.target.id;
                 console.log(ChId);
                 if(ChId == question3.correctAnswer){
+
+                    correct++;
                     alert("Correct");
                     clrA();
                     showTrivia4();
+
                 }
                 else{
+
+                    incorrect ++;
                     alert('Wrong')
                 }
             });
         } 
-        function showTrivia4(){
-            $('.time').append("<h2>"+timer+"</h2>");
-            $('#Quest').append("<h2>" + question4.question + "</h2>");
-            $('.win').append("<h2>Correct: "+correct+"</h2>");
-            $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
 
+        function showTrivia4(){
+            
+            showIt();
+            $('#Quest').append("<h2 class = QSTN>" + question4.question + "</h2>");
 
             for(var i = 0; i < question4.choices.length; i++){
                 // var answers = $('<h2>'+question1.choices[i]+'<h2>');
@@ -186,19 +201,17 @@ $(document).ready(function(){
                 else{
 
                     incorrect++
-                    $(".loss").empty();
-                    $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+                    $("#loss").empty();
+                    $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
                     alert('Wrong')
                 }
             });
         } 
 
         function showTrivia5(){
-            $('.time').append("<h2>"+timer+"</h2>");
-            $('#Quest').append("<h2>" + question5.question + "</h2>");
-            $('.win').append("<h2>Correct: "+correct+"</h2>");
-            $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
-
+           
+            showIt();
+            $('#Quest').append("<h2 class = QSTN>" + question5.question + "</h2>");
 
             for(var i = 0; i < question5.choices.length; i++){
                 // var answers = $('<h2>'+question1.choices[i]+'<h2>');
@@ -213,40 +226,22 @@ $(document).ready(function(){
                 if(ChId == question5.correctAnswer){
 
                     correct ++;
-                    alert("Correct");
+                    $('#Quest').append("<h1 class = uWin>You Win!</h1>");
+                    clearInterval(myVar);
                     clrA();
-                    ;
+                    
 
                 }
                 else{
 
                     incorrect++
-                    $(".loss").empty();
-                    $('.loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+                    $("#loss").empty();
+                    $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
                     alert('Wrong')
                 }
             });
         } 
 
-        //function that compares user click to correctAnswer
-            // $("h4").on("click", function(){
-            //     let ChId = event.target.id;
-            //     console.log(ChId);
-            //     if(ChId == question1.correctAnswer){
-            //         alert("Cgorrect");
-            //         showTrivia2();
-            //     }
-            //     else{
-            //         alert('Wrong')
-            //     }
-            // });
-            
-        
-
-        // $("#Ch").on("click", function(){
-        //     console.log("this");
-        // });
-
-        //function that compares user click to correctAnswer
+        //calls show1 to getr goin
         showTrivia1();
 });    
