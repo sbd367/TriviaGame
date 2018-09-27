@@ -1,27 +1,27 @@
 body{
-    background: gray;
+    background-image: url(http://www.wallpaperup.com/uploads/wallpapers/2014/11/27/531567/d49809964a23815b203e2000e2b30a9f.jpg);
 }
 .jumbotron{
     width: 60vw;
     display: none;
+    opacity: .7;
 }
 
 .heading{
     width: 60vw;
-    padding: 20px;
-    
+    margin-top: 10px;
+    color: #009ADA;
     
 }
 
-nav{
-    width: 70vw;
-}
 h1{
     text-align: center;
 }
 h2{
     text-align: center;
     margin-bottom: 15px;
+    color: #009ADA;
+    
 }
 
 h4{
@@ -46,4 +46,10 @@ h4{
 
 .timme{
     margin-top: 40px;
+}
+#head{
+    background:rgb(191, 10, 48);
+    padding: 30px;
+    border-radius: 5px;
+    font-size: 5vw;
 }

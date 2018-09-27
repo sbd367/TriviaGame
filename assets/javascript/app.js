@@ -32,6 +32,8 @@ $(document).ready(function(){
 
     var myVar;
 
+    var score = 0;
+
     var timer = 10;
 
     var correct = 0;
@@ -67,12 +69,30 @@ $(document).ready(function(){
                 clearInterval(myVar);
             }
         }
+
     //function that resets DOM    
         function clrA(){
             timer = 10;
             $('h2').empty();
             $('#time').empty();
             $('h4').remove();
+        }
+        
+        //incorrect answer function
+        function wrongA(){
+                    score --;
+                    incorrect++
+                    $("#loss").empty();
+                    $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+                    alert('Wrong')
+        }
+
+        //correct answer function
+        function correctAn(){
+                    score ++;
+                    correct ++;
+                    alert("Correct");
+                    clrA();
         }
 
         //function to show timer correct/incorrect
@@ -100,18 +120,13 @@ $(document).ready(function(){
                 console.log(ChId);
                 if(ChId == question1.correctAnswer){
 
-                    correct ++;
-                    alert("Correct");
-                    clrA();
+                    correctAn();
                     showTrivia2();
 
                 }
                 else{
 
-                    incorrect++;
-                    $("#loss").empty();
-                    $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
-                    alert('Wrong')
+                    wrongA();
                 }
             });
         }    
@@ -133,14 +148,11 @@ $(document).ready(function(){
                 console.log(ChId);
                 if(ChId == question2.correctAnswer){
 
-                    correct++;
-                    alert("Correct");
-                    clrA();
+                    correctAn();
                     showTrivia3();
                 }
                 else{
-                    incorrect ++;
-                    alert('Wrong');
+                   wrongA();
                 }
             });
         }
@@ -161,16 +173,12 @@ $(document).ready(function(){
                 console.log(ChId);
                 if(ChId == question3.correctAnswer){
 
-                    correct++;
-                    alert("Correct");
-                    clrA();
+                    correctAn();
                     showTrivia4();
 
                 }
                 else{
-
-                    incorrect ++;
-                    alert('Wrong')
+                    wrongA();
                 }
             });
         } 
@@ -192,18 +200,13 @@ $(document).ready(function(){
                 console.log(ChId);
                 if(ChId == question4.correctAnswer){
 
-                    correct ++;
-                    alert("Correct");
-                    clrA();
+                    correctAn();
                     showTrivia5();
 
                 }
                 else{
 
-                    incorrect++
-                    $("#loss").empty();
-                    $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
-                    alert('Wrong')
+                    wrongA();
                 }
             });
         } 
@@ -226,6 +229,7 @@ $(document).ready(function(){
                 if(ChId == question5.correctAnswer){
 
                     correct ++;
+                    alert("You you completed the quiz with a score of "+score);
                     $('#Quest').append("<h1 class = uWin>You Win!</h1>");
                     clearInterval(myVar);
                     clrA();
@@ -234,10 +238,7 @@ $(document).ready(function(){
                 }
                 else{
 
-                    incorrect++
-                    $("#loss").empty();
-                    $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
-                    alert('Wrong')
+                    wrongA();
                 }
             });
         } 
