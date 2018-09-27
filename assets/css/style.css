@@ -1,5 +1,6 @@
 .jumbotron{
     width: 60vw;
+    display: none;
 }
 
 .heading{
@@ -11,6 +12,9 @@
 nav{
     width: 70vw;
 }
+h1{
+    text-align: center;
+}
 h2{
     text-align: center;
 }
@@ -21,4 +25,8 @@ h2{
 h4{
     padding: 10px;
     margin-left: 40px;
+}
+
+#start{
+    
 }
