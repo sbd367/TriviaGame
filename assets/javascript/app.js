@@ -80,8 +80,10 @@ $(document).ready(function(){
         
         //incorrect answer function
         function wrongA(){
-                    score --;
+                    score = score-5;
                     incorrect++
+                    $('#score').empty();
+                    $('#score').append("<h2>Score: "+score+"</h2>");
                     $("#loss").empty();
                     $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
                     alert('Wrong')
@@ -89,7 +91,7 @@ $(document).ready(function(){
 
         //correct answer function
         function correctAn(){
-                    score ++;
+                    score = score+5;
                     correct ++;
                     alert("Correct");
                     clrA();
@@ -100,6 +102,8 @@ $(document).ready(function(){
             $('#time').append("<h2>Time Left: "+timer+"</h2>");
             $('#win').append("<h2>Correct: "+correct+"</h2>");
             $('#loss').append("<h2>Incorrect: "+incorrect+"</h2>");
+            $('#score').append("<h2>Score: "+score+"</h2>");
+            
         }
 
     // functions to display trivia questions and choices
@@ -228,7 +232,7 @@ $(document).ready(function(){
                 console.log(ChId);
                 if(ChId == question5.correctAnswer){
 
-                    correct ++;
+                    correctAn();
                     alert("You you completed the quiz with a score of "+score);
                     $('#Quest').append("<h1 class = uWin>You Win!</h1>");
                     clearInterval(myVar);
